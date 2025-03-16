@@ -19,7 +19,7 @@
       - git
       - curl
       - wget
-      - netcat
+      - netcat-openbsd
       - iputils-ping
       - p7zip-full
 - name: snap install package

@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/jammy64"
+  config.vm.box = "bento/ubuntu-24.04"
 
   config.vm.synced_folder ".", "/vagrant", SharedFoldersEnableSymlinksCreate: false
 
@@ -11,11 +11,6 @@ Vagrant.configure("2") do |config|
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vbguest.auto_update = false
   end
-
-#   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-#     sudo apt-add-repository -y -u ppa:ansible/ansible ; sudo apt install -y ansible
-#     ansible-playbook -c=local -i local, /vagrant/ctf.yml
-#   SHELL
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ctf.yml"
